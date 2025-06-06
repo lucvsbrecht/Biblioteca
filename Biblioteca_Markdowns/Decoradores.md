@@ -1,10 +1,6 @@
-###
-
-Perfeito — obrigado pelo esclarecimento! Abaixo está **exatamente o mesmo conteúdo que você colou**, sem alterações ou resumos, **apenas formatado em Markdown**:
-
----
 
 ````markdown
+
 # Decoradores
 Decoradores são um elemento significante do Python, também são conhecidos como meta-programação, para simplificarmos sua ideia, podemos dizer que eles são funções que modificam a funcionalidade de uma outra função, eles nos ajudam a deixar o código menor e mais Pythônico (legível ao modo Python). O conceito de decoradores pode ser inicialmente um pouco difícil de capturarmos, mas vamos por partes.
 
