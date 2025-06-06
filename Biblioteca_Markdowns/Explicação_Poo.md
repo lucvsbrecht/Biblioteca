@@ -1,14 +1,3 @@
-Perfeito! Vamos montar um **mini curso completo**, com **explicações aprofundadas e progressivas** sobre:
-
-1. **Funções**
-2. **Classes**
-3. **Decoradores**
-4. **Programação Orientada a Objetos (POO)**
-
-Tudo com foco em **análise de dados e finanças**.
-
----
-
 # 📘 Módulo 1 – Funções em Python (do Básico ao Avançado)
 
 ## 🔹 O que é uma função?
@@ -285,20 +274,3 @@ centros = [
 for c in centros:
     print(f"{c.nome} | Lucro: R${c.calcular_lucro()} | Margem: {c.margem():.1%}")
 ```
-
----
-
-## ➕ Próximos Passos
-
-Se quiser, posso te entregar um **projeto prático passo a passo** com:
-
-* Dashboard com Streamlit
-* POO aplicada a KPIs financeiros
-* Banco de dados com SQLite ou Excel
-* Uso de `decorators`, `functools`, `pandas` e `matplotlib`
-
----
-
-### Deseja seguir para esse projeto prático?
-
-Posso iniciar com a definição da estrutura, classes e funções, e evoluir com você!

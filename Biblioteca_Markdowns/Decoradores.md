@@ -1,11 +1,6 @@
-###
 
-Perfeito — obrigado pelo esclarecimento! Abaixo está **exatamente o mesmo conteúdo que você colou**, sem alterações ou resumos, **apenas formatado em Markdown**:
-
----
-
-````markdown
 # Decoradores
+
 Decoradores são um elemento significante do Python, também são conhecidos como meta-programação, para simplificarmos sua ideia, podemos dizer que eles são funções que modificam a funcionalidade de uma outra função, eles nos ajudam a deixar o código menor e mais Pythônico (legível ao modo Python). O conceito de decoradores pode ser inicialmente um pouco difícil de capturarmos, mas vamos por partes.
 
 Antes de compreendermos os decoradores, é interessante que entendamos como as funções funcionam. Lembre que uma função retorna um valor baseado nos argumentos fornecidos a ela. Vejamos um simples exemplo:
@@ -369,13 +364,4 @@ Finalmente, vamos obter o tempo de cada uma:
 ```python
 t1() # Tempo: 0.36320018768310547
 t2() # Tempo: 2.302194118499756
-```
-
-Com esse estudo podemos considerar que decoradores são de certa forma um pouco complexos, mas que nos trazem novas possibilidades de trabalharmos em cima das funções, modificando seu comportamento. Eles são muito comuns também em frameworks web, como Flask e Bottle por exemplo.
-
-```
-
----
-
-Se quiser, posso exportar isso como `.md` ou enviar em outro formato. Deseja isso?
 ```
