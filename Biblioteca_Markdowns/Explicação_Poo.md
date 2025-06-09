@@ -919,11 +919,70 @@ Use decoradores quando você quiser:
 <summary>🔹<h1> <strong> 🧱 Módulo 3 – Classes em Python </strong></h1></summary>
 
 <details>
-<summary>🔹<h4> <strong> O que é uma classe? </strong></h4></summary>
+<summary>🔹<h4> <strong> 🧠 O que é uma classe? </strong></h4></summary>
 
-Uma **classe** é como um **molde** que define como serão os objetos.
+<details>
+<summary>🔹<h5> <strong> 🧠 Classe, explicação: </strong></h5></summary>
+Uma classe é um molde para criar objetos.
+Cada objeto tem atributos (dados) e métodos (comportamentos).
 
-Exemplo de classe que representa um produto:
+💬 Analogia:
+*    A classe é a receita do bolo.
+
+*    O objeto é o bolo feito a partir da receita.
+
+*    Cada bolo pode ter recheio, tamanho e sabor diferentes (atributos), mas todos foram feitos pela mesma receita.
+</details>
+<details>
+<summary>🔹<h5> <strong> 🧱 Estrutura de uma classe </strong></h5></summary>
+```python
+class NomeDaClasse:
+    def __init__(self, parametros):
+        self.atributo = valor
+
+    def metodo(self):
+        # ação
+        pass
+```
+
+### 🔍 Partes da classe:
+
+| Parte      | O que é                                                       |
+| ---------- | ------------------------------------------------------------- |
+| `class`    | Palavra-chave para criar uma classe                           |
+| `__init__` | Método construtor, chamado quando um novo objeto é criado     |
+| `self`     | Representa o próprio objeto (instância)                       |
+| Atributos  | Variáveis ligadas ao objeto (`self.nome`, `self.preco`, etc.) |
+| Métodos    | Funções dentro da classe, que usam ou modificam atributos     |
+
+---
+</details>
+<details>
+<strong><h5><summary>✅ Exemplo básico: Pessoa </strong></h5></summary>
+
+```python
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def apresentar(self):
+        print(f"Olá, meu nome é {self.nome} e tenho {self.idade} anos.")
+
+# Criando objetos
+p1 = Pessoa("João", 30)
+p2 = Pessoa("Ana", 25)
+
+p1.apresentar()
+p2.apresentar()
+```
+
+✔️ Cada `Pessoa` criada tem **seus próprios dados**, mas compartilha os mesmos **métodos**.
+
+</details>
+
+<details>
+<summary>🔹<h5> <strong> Exemplo de classe que representa um produto: </strong></h5></summary>
 
 ```python
 class Produto:
@@ -949,17 +1008,194 @@ p1.aplicar_desconto(0.1)
 print(p1.preco)  # 2700.0
 ```
 </details>
+</details>
 <details>
-<summary>🔹<h4> <strong> Atributos vs Métodos </strong></h4></summary>
+    
+<summary>🔹<h5> <strong> 🔁 Métodos da classe </strong></h5></summary>
+
+<details>
+<summary>🔹<h5> <strong> 🔁 Métodos </strong></h5></summary>
+
+---
+
+### 1. Método comum (usa `self`)
+
+```python
+def aumentar_idade(self):
+    self.idade += 1
+```
+
+### 2. Método de classe (`@classmethod`, usa `cls`)
+
+```python
+@classmethod
+def criar_bebe(cls, nome):
+    return cls(nome, 0)
+```
+
+### 3. Método estático (`@staticmethod`, sem `self` ou `cls`)
+
+```python
+@staticmethod
+def ano_atual():
+    from datetime import datetime
+    return datetime.now().year
+```
+---
+
+</details>
+</details>
+
+<details>
+<summary>🔹<h5> <strong> 🔐 Encapsulamento </strong></h5></summary>
+
+---
+    
+### ➕ Atributos protegidos
+
+```python
+class Conta:
+    def __init__(self, saldo):
+        self.__saldo = saldo  # privado
+
+    def ver_saldo(self):
+        return self.__saldo
+```
+
+✔️ `__saldo` não pode ser acessado diretamente (proteção contra uso indevido).
+
+---
+
+# 👪 Herança
+
+> Permite que uma classe **herde** atributos e métodos de outra classe.
+
+```python
+class Funcionario:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def trabalhar(self):
+        print(f"{self.nome} está trabalhando...")
+
+class Gerente(Funcionario):
+    def aprovar(self):
+        print(f"{self.nome} está aprovando relatórios.")
+```
+
+✔️ A classe `Gerente` pode **usar os métodos da classe `Funcionario`**, além de ter seus próprios.
+
+---
+
+# 🧬 Polimorfismo
+
+> Permite que diferentes classes tenham **métodos com o mesmo nome**, mas **com comportamentos diferentes**.
+
+```python
+class Animal:
+    def falar(self):
+        print("Algum som...")
+
+class Cachorro(Animal):
+    def falar(self):
+        print("Au au!")
+
+class Gato(Animal):
+    def falar(self):
+        print("Miau!")
+
+for a in [Cachorro(), Gato()]:
+    a.falar()
+```
+
+---
+
+# 📊 Exemplo real aplicado: Análise Financeira
+
+```python
+class CentroCusto:
+    def __init__(self, nome, receita, custo):
+        self.nome = nome
+        self.receita = receita
+        self.custo = custo
+
+    def lucro(self):
+        return self.receita - self.custo
+
+    def margem(self):
+        if self.receita == 0:
+            return 0
+        return self.lucro() / self.receita
+```
+
+### 🧪 Usando com dados:
+
+```python
+centros = [
+    CentroCusto("TI", 10000, 7000),
+    CentroCusto("RH", 8000, 4000)
+]
+
+for c in centros:
+    print(f"{c.nome} | Lucro: {c.lucro()} | Margem: {c.margem():.2%}")
+```
+
+---
+</details>
+
+<details>
+<summary>🔹<h5> <strong> Atributos vs Métodos </strong></h5></summary>
+
+---
 
 | Conceito | O que é                   | Exemplo                   |
 | -------- | ------------------------- | ------------------------- |
 | Atributo | Dado do objeto            | `self.nome`, `self.preco` |
 | Método   | Função que atua no objeto | `.aplicar_desconto()`     |
+
+---
+
+</details>
+
+
+
+<details>
+<summary>🔹<h5> <strong> 📦 Resumo dos principais conceitos </strong></h5></summary>
+
+---
+
+| Conceito       | Explicação rápida                                      |
+| -------------- | ------------------------------------------------------ |
+| Classe         | Molde para criar objetos                               |
+| Objeto         | Instância da classe, com atributos próprios            |
+| `__init__`     | Inicializador chamado ao criar o objeto                |
+| `self`         | Referência ao objeto atual                             |
+| Atributo       | Dado associado ao objeto (`self.nome`)                 |
+| Método         | Ação que o objeto pode realizar (`self.fazer()`)       |
+| Encapsulamento | Esconde/Protege partes do objeto (`__privado`)         |
+| Herança        | Uma classe herda de outra (`class A(B):`)              |
+| Polimorfismo   | Métodos com o mesmo nome agem diferente em cada classe |
+---
+</details>
+
+<details>
+<summary>🔹<h5> <strong>  🧠 Quando usar classes? </strong></h5></summary>
+
+Use classes quando:
+---
+* Seu projeto precisa representar **entidades complexas** (clientes, produtos, contas, relatórios).
+* Você quer organizar código **por responsabilidade**.
+* Deseja **reutilização, legibilidade e escalabilidade**.
+* Está fazendo **análise orientada a dados ou objetos**.
+
+---
+
 </details>
 
 <details>
 <summary>🔹<h4> <strong> Classes em finanças </strong></h4></summary>
+
+---
 
 Classe que calcula margem de lucro:
 
@@ -980,8 +1216,12 @@ lucro = Lucro(10000, 7000)
 print(lucro.margem())  # 0.3 ou 30%
 ```
 
+---
+
 </details>
 </details>
+
+
 <details>    
 <summary>🔹<h1> <strong> 🧭 Módulo 4 – Programação Orientada a Objetos (POO) </strong></h4></summary>
 <details>
