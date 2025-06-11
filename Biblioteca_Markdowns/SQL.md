@@ -1,6 +1,5 @@
 <details>
 <summary>🔹<h1> <strong> 📘SQL </strong></h1></summary>
-</details>
 
 <details>
 <summary>🔹<h2> <strong> PostGreSQL Documentação </strong></h2></summary>
@@ -333,7 +332,7 @@ WHERE TABLE_NAME = 'tb_tarifas_complementares'
 ```
 
 </details>
-
+</details>
 
 </details>
 </details>
