@@ -298,7 +298,7 @@ FROM public.order_details detalhes
 LEFT JOIN public.products produtos 
     ON detalhes.product_id = produtos.product_id;
 ```
-
+</details>
 <details>
 <summary>🔹<h3> <strong> Verificar o Collation das Colunas </strong></h3></summary>
 
@@ -333,7 +333,6 @@ WHERE TABLE_NAME = 'tb_tarifas_complementares'
 
 </details>
 </details>
-
 </details>
 </details>
 </details>
