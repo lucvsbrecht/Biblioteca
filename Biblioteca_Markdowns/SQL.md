@@ -1,26 +1,37 @@
-# SQL
+<details>
+<summary>🔹<h1> <strong> 📘SQL </strong></h1></summary>
+</details>
 
-# PostGreSQL Documentação
-
+<details>
+<summary>🔹<h2> <strong> PostGreSQL Documentação </strong></h2></summary>
 [https://www.notion.so](https://www.notion.so)
+</details>
 
-# Códigos auxiliares
 
-## Ordem Exexução
-
+<details>
+<summary>🔹<h2> <strong> Ordem Exexução </strong></h2></summary>
+	
 ![Fqtt03faAAAdyYp.jpeg](Escolinha%20%F0%9F%AB%95%203ff711aeae3f4f1593cf2585e5e5b498/Fqtt03faAAAdyYp.jpeg)
 
-## Duvidas Aleatórias que surgiram durante a Vida
+</details>
 
-### Qual a diferença de usar With e Sub-Query?
+<details>
+<summary>🔹<h2> <strong> Códigos auxiliares e Dúvidas </strong></h2></summary>
 
-O que o eu, Lucas entendi no momento que surgiu a dúvida:
+<details>
+<summary>🔹<h3> <strong> Qual a diferença de usar With e Sub-Query? </strong></h3></summary>
+
+<details>
+<summary>🔹<h4> <strong> O que o eu, Lucas entendi no momento que surgiu a dúvida: </strong></h4></summary>
 
 É que, me parece, que sub-query possui uma leitura mais complicada, o código me parece mais desorganizado, em um teste, o desempenho com o With ficou melhor. Percebi tambpem que consigo referenciar o With outras vezes, coisa que não consigo na Subquery
+</details>
 
-O que meu amigo robozinho entende:
+<details>
+<summary>🔹<h4> <strong> O que meu amigo robozinho entende: </strong></h4></summary>
 
-### **`WITH` (Common Table Expressions - CTE) vs. Subquery no PostgreSQL**
+<details>
+<summary>🔹<h5> <strong> `WITH` (Common Table Expressions - CTE) vs. Subquery no PostgreSQL </strong></h5></summary>
 
 Tanto **`WITH` (CTE)** quanto **subqueries** permitem criar consultas intermediárias para organizar o código SQL. No entanto, existem diferenças de desempenho e legibilidade entre elas.
 
@@ -60,8 +71,10 @@ WHERE ranked."Ranking" <= 5;
 - Em alguns casos, pode ser **menos eficiente** do que `WITH`, pois a subquery pode ser recalculada várias vezes.
 
 ---
+</details>
 
-## 📌 **2. O que é `WITH` (CTE - Common Table Expression)?**
+<details>
+<summary>🔹<h5> <strong> 📌 **2. O que é `WITH` (CTE - Common Table Expression)? </strong></h5></summary>
 
 O `WITH` cria uma **tabela temporária nomeada** que pode ser reutilizada na consulta principal.
 
@@ -105,33 +118,42 @@ SELECT * FROM ranked WHERE "Ranking" <= 5;
 | PostgreSQL precisa otimizar a execução | ✅ Sim | ❌ Pode repetir cálculos |
 
 ---
+</details>
 
-### **📌 Resumo Final**
+<details>
+<summary>🔹<h5> <strong> 📌 Resumo Final </strong></h5></summary>
 
 - Use **`WITH` (CTE)** quando precisar de **código organizado e reutilizável**.
 - Use **subquery** para **consultas simples** que não precisam ser reutilizadas.
 - Para **grandes conjuntos de dados**, **testar o desempenho** pode ser importante para escolher a melhor abordagem.
+---
+</details>
+</details>
+</details>
 
-🚀 Agora você pode decidir qual usar no seu SQL! Se precisar de mais detalhes, me avise. 😊
-
-Comentario Final: Me parece que estava certo :)
-
-## Verificar informações das tabelas
+<details>
+<summary>🔹<h2> <strong> Querys Auxiliares </strong></h2></summary>
+<details>
+<summary>🔹<h3> <strong> Verificar informações das tabelas </strong></h3></summary>
 
 ```sql
 SELECT column_name, data_type 
 FROM information_schema.columns 
 WHERE table_name = 'zzz';
 ```
+</details>
 
-## Verificar primeira linha
+<details>
+<summary>🔹<h3> <strong> Verificar primeira linha </strong></h3></summary>
 
 ```sql
 SELECT * FROM schema.table 
 LIMIT 2;
 ```
+</details>
 
-## Utilização de IF (No caso, em SQL é o Case)
+<details>
+<summary>🔹<h3> <strong> Utilização de IF (No caso, em SQL é o Case) </strong></h3></summary>
 
 ```sql
 SELECT id, 
@@ -145,8 +167,11 @@ SELECT id,
 FROM funcionarios;
 
 ```
+</details>
 
-## Utilização do Having
+
+<details>
+<summary>🔹<h3> <strong>  Utilização do Having  </strong></h3></summary>
 
 ```sql
 SELECT detalhes.product_id AS "Código do Produto",
@@ -155,8 +180,10 @@ FROM public.order_details detalhes
 GROUP BY detalhes.product_id
 HAVING SUM(detalhes.quantity) > 100;
 ```
+</details>
 
-## Utilização do RANK()
+<details>
+<summary>🔹<h3> <strong>  Utilização do RANK() </strong></h3></summary>
 
 ```sql
 SELECT 
@@ -175,8 +202,10 @@ LEFT JOIN public.products produtos
 GROUP BY produtos.category_id, produtos.product_id, produtos.product_name;
 
 ```
+</details>
 
-## Utilização de Funções de Janela para substituir Group By
+<details>
+<summary>🔹<h3> <strong> Utilização de Funções de Janela para substituir Group By </strong></h3></summary>
 
 ```sql
 SELECT DISTINCT
@@ -270,3 +299,43 @@ FROM public.order_details detalhes
 LEFT JOIN public.products produtos 
     ON detalhes.product_id = produtos.product_id;
 ```
+
+<details>
+<summary>🔹<h3> <strong> Verificar o Collation das Colunas </strong></h3></summary>
+
+Você deve aplicar COLLATE somente às colunas de texto, e não às colunas do tipo numérico.
+
+Exemplo de Sintaxe
+```sql
+USE schema_name;
+
+SELECT 
+    COLUMN_NAME, 
+    DATA_TYPE, 
+    COLLATION_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'nome_table'
+  AND COLUMN_NAME IN ('coluna_a', 'coluna_b', 'coluna_c', 'coluna_d');
+```
+
+
+Exemplo de Query aplicado na prática
+```sql
+USE intec;
+
+SELECT 
+    COLUMN_NAME, 
+    DATA_TYPE, 
+    COLLATION_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'tb_tarifas_complementares'
+  AND COLUMN_NAME IN ('ds_Tarifa', 'ds_Aplicar', 'ds_informaOc', 'ds_BaseCalculo');
+```
+
+</details>
+
+
+</details>
+</details>
+</details>
+</details>
