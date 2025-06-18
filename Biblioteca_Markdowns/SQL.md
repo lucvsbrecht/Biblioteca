@@ -143,6 +143,24 @@ WHERE table_name = 'zzz';
 </details>
 
 <details>
+<summary>🔹<h3> <strong> Converter Datas, extrair meses e filtrar </strong></h3></summary>
+
+```sql
+SELECT
+EXTRACT(MONTH FROM TO_DATE(s.nome_tabela, 'YYYYMMDD')) AS "Mes",
+TO_DATE(s.nome_tabela, 'YYYYMMDD') AS "Data"
+FROM information_schema.columns 
+WHERE TO_DATE(s.nome_tabela, 'YYYYMMDD') BETWEEN TO_DATE('20250401', 'YYYYMMDD') AND TO_DATE('20250531', 'YYYYMMDD')
+GROUP BY EXTRACT(MONTH FROM TO_DATE(s.nome_tabela, 'YYYYMMDD'))
+ORDER BY EXTRACT(MONTH FROM TO_DATE(s.nome_tabela, 'YYYYMMDD')) ASC;
+```
+Podem ter outros formatos de data!!!
+Só porquê no Select você converteu, não quer dizer que na origem foi alterado, por isso é necessário converter também no Where, Group By e Order By
+</details>
+
+
+
+<details>
 <summary>🔹<h3> <strong> Verificar primeira linha </strong></h3></summary>
 
 ```sql
